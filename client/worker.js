@@ -10,5 +10,5 @@
 // });
 
 self.addEventListener('push', () => {
-    self.registration.showNotification('Hello world!', options);
+    self.registration.showNotification('Hello world!');
   });

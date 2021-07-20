@@ -1,7 +1,13 @@
-const webPush= require('webPush');
+
+const webpush = require('web-push');
+
+const publicVapidKey = process.env.PUBLIC_VAPID_KEY;
+const privateVapidKey = process.env.PRIVATE_VAPID_KEY;
+webpush.setVapidDetails('mailto:test@example.com', publicVapidKey, privateVapidKey);
+
 exports.sendNotifications =async (subscription,payload) => {
     try {
-        return await webPush.sendNotification(subscription, payload)
+        return await webpush.sendNotification(subscription, payload)
     } catch (error) {
         throw error
     }

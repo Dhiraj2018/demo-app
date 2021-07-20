@@ -1,6 +1,6 @@
 const {Item} = require('../models/item.model');
-const ItemService = requite('../services/item.service');
-exports.getAllItems = async(req, res, next)=>{
+const ItemService = require('../services/item.service');
+exports.getAllItems = async (req, res, next)=>{
   try {
       
   // const reqObj= req

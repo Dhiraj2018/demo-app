@@ -141,7 +141,7 @@ async function createClubItemDiscountMap(orderItems) {
  * @returns 
  */
 async function calOrderDiscountAndTotal(orderItems, items_club_hashmap) {
-    const invoiceDetails={orderItems:[],orderTotal:0,discountTotal:0};
+    const invoiceDetails={order_items:[],invoice_total:0,overall_discount:0};
     try {
         for (let item of orderItems) {
 
@@ -152,9 +152,9 @@ async function calOrderDiscountAndTotal(orderItems, items_club_hashmap) {
             let itemTotalWithoutTax = Number(Number((100 - itemDiscount) * item.qty * temp.unit_price / 100).toFixed(2));
             tempOrderItemDetail.itemTotalWithTax = Number(Number(itemTotalWithoutTax - (0.01 * temp.tax_rate * itemTotalWithoutTax)).toFixed(2));
            
-            invoiceDetails.orderTotal += Number(tempOrderItemDetail.itemTotalWithTax);
-            invoiceDetails.discountTotal += Number(Number(0.01 * itemDiscount * item.qty * temp.unit_price).toFixed(2));
-            invoiceDetails.orderItems.push({
+            invoiceDetails.invoice_total += Number(tempOrderItemDetail.itemTotalWithTax);
+            invoiceDetails.overall_discount += Number(Number(0.01 * itemDiscount * item.qty * temp.unit_price).toFixed(2));
+            invoiceDetails.order_items.push({
                itemId: tempOrderItemDetail.itemId,
                 qty: tempOrderItemDetail.itemQty,
                 itemDiscount: tempOrderItemDetail.itemDiscount

@@ -26,7 +26,6 @@ const InvoiceSchema = new mongoose.Schema({
       
     customer_id:{type:Schema.Types.ObjectId, ref: 'Customer', required:true},
     overall_discount:{type:Number, default:0},
-    overall_tax_rate:{type:Number, default:0},
     invoice_total:{
       type:Number,
       required:true
